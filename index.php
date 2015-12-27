@@ -1,6 +1,6 @@
 <?php
 
-$pageTitle = 'NewPage';
+$pageTitle = 'Home';
 
 ## Add items to the header if needed
 #$extraCSS = '';

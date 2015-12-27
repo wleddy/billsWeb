@@ -1,5 +1,6 @@
 <?php
-
+$SiteName = "";
+if ($SiteName == "") $SiteName = $_SERVER['SERVER_NAME'];
 
 # Install PSR-0-compatible class autoloader
 spl_autoload_register(function($class){
@@ -61,7 +62,7 @@ foreach($htmlContainers as $baseName => $x_value){
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php echo($pageTitle);?></title>
+        <title><?php echo($pageTitle);?> - <?php echo($SiteName)?></title>
 		<link rel="icon" type="image/png" href="/images/favoricon.png" >
 	    <link rel="SHORTCUT ICON" type="image/vnd.microsoft.icon" href="/images/favricon.ico" >
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

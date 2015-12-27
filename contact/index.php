@@ -1,6 +1,6 @@
 <?php
 
-$pageTitle = 'Contact Me - Janice Horne';
+$pageTitle = 'Contact';
 
 ## Add items to the header if needed
 
