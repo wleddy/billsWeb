@@ -15,9 +15,6 @@ if((file_exists($site['config_global_settings'])) && (file_exists($site['config_
 }
 
 //// Un Comment any setting you want to override the global settings
-
-// Just in case we need to relay to a different server,  
-// provide an option to use external mail server. 
 //$site['smtp_mode'] = 'enabled'; // enabled or disabled 
 //$site['smtp_host'] = 'smtpout.secureserver.net'; 
 //$site['smtp_port'] = '80'; 
