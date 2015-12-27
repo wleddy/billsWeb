@@ -1,2 +1,7 @@
-
-<h2>Navigation goes here</h2>
+- [Home](/)
+- |
+- [About](/about/)
+- |
+- [Documentation](/docs/)
+- |
+- [Contact](/contact/)
