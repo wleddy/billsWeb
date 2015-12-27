@@ -16,11 +16,11 @@
 				$request .= "Question: " . $_POST['Question'] . "\n";
 
 				$request = stripslashes($request);
-
-				if(($_POST['Additional_Info'] == '') && ($CommentHasHttp_b == false)){
+                $isNotEmpty = (($_POST['Name']. $_POST['Phone'].$_POST['email'].$_POST['Question']) != "");
+				if(($_POST['Additional_Info'] == '') && ($CommentHasHttp_b == false) && ($isNotEmpty)){
 					// the secret question is not shown to real users so must be empty
 					// No longer actually send the spammers mail
-					
+
 					// $site array now exists
 					$fromAddress = $site['from_email'];
 
@@ -29,7 +29,8 @@
 	
 					// instantiate the class 
 					$mailer = new FreakMailer(); 
-	
+					$DEBUG = false;
+	                $mailer->SMTPDebug = $DEBUG;
 					// Set the subject 
 					$mailer->Subject = "Web Contact"; 
 	
@@ -60,14 +61,15 @@
 					}
 					
 					if(!$mailer->Send()) 
-					{ 
-						echo "<h3>Sorry, there is a problem with our email system.</h3>";
-					} 
+					{ ?>
+						<h3>Sorry, there is a problem with our email system.</h3>
+						<pre><?php echo $mailer->ErrorInfo . " "; ?></pre>
+					<?php } 
 					else 
 					{ ?>
 					    <div id="main">
 						<h2>Thank You for your interest</h2>
-						<p>A reply is on the way.</p>
+						<p>A reply will be on the way shortly.</p>
 						</div>
 						<div id="sidebar">&nbsp;</div>
 					<?php 
@@ -76,7 +78,7 @@
 					$mailer->ClearAttachments(); 
 					$mailer->ClearCustomHeaders(); 
 					$mailer->ClearReplyTos(); 
-					
+                    
 				} // secret question is empty
 			} // if Post
 			else{
@@ -84,7 +86,7 @@
 			?>  <div id="main">
 				<h2>Contact Us</h2>
 				<div>
-                    <form action="#" method="post" name="form" id="form">
+                    <form action="" method="post" name="form" id="form">
 						<?php
 							$timeCode = time();
 						?>
