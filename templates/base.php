@@ -69,9 +69,19 @@ foreach($htmlContainers as $baseName => $x_value){
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script type="text/javascript" src="/js/common.js" ></script>
+		<?php
+		    if(file_exists($_SERVER['DOCUMENT_ROOT']."/".$localDir."/".$localDir.'.js')){
+		    echo('<script type="text/javascript" src="'.$localDir.'.js" ></script>');
+		    }
+		?>
 		<?php echo($extraJS);?>
 		
 		<link rel="stylesheet" href="/css/default.css" type="text/css" media="all" >
+		<?php
+		    if(file_exists($_SERVER['DOCUMENT_ROOT']."/".$localDir."/".$localDir.'.css')){
+		    echo('<link rel="stylesheet" href="'.$localDir.'.css" type="text/css" media="all" >');
+		    }
+		?>
 		<?php echo($extraCSS);?>
 		
     </head>

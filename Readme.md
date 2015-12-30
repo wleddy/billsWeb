@@ -32,8 +32,12 @@ follows:
 	empty.
 	
 ### Adding Extra Header Elements
+If you create files named `<directory name>.css` for styles or `<directory name>.js`
+for javascript, and include them in the same directory as the index file a reference 
+will be included in the header for the page. (This will not work for the index at 
+document root)
 
-You can add extra header elements such as css and javascript by setting the 
+You can also add extra header elements such as css and javascript by setting the 
 values of the `$extraCSS`, `$extraJS` & `$extraHeaders` variables
 in the `index.php` file of a page directory to the HTML you would like inserted
 into the header of the page.
