@@ -48,3 +48,5 @@ If you want to add a site wide header, just add it in `/templates/base.php`.
 My framework uses the php markdown interpreter created by by Michel Fortin  <https://michelf.ca/>
 
 Based on Markdown by John Gruber  <http://daringfireball.net/>
+
+The `contact` directory included is dependent on PHPMailer which is not included.
