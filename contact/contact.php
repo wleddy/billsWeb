@@ -1,7 +1,7 @@
 <?php
 try{
     $GotConfig = false;
-	require_once('config.php');
+	include($_SERVER['DOCUMENT_ROOT'].'contact/config.php');
 	$GotConfig = true;
 } catch (Exception $e) {
     echo "<h3><strong>Exception:</strong> {$e->getMessage()}</h3>";
@@ -29,9 +29,6 @@ try{
 
 			// $site array now exists
 			$fromAddress = $site['from_email'];
-
-			// Grab the FreakMailer class 
-			require_once($site['config_library'].'/MailClass.inc'); 
 
 			// instantiate the class 
 			$mailer = new FreakMailer(); 

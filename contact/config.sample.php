@@ -2,10 +2,8 @@
 <?php 
 // Configuration settings
 // Location for system wide settings
-$site['config_root'] = '/Users/bleddy/Sites'; // location of config.php for all sites
-
+$site['config_root'] = '/Users/bleddy/Sites/lib'; // location of config.php for all sites
 $site['config_global_settings'] = $site['config_root'].'/config.php'; // Global config file
-$site['config_library'] = $site['config_root'].'/lib'; // location of shared libraries
 
 if((file_exists($site['config_global_settings'])) && (file_exists($site['config_library']))) {
     require_once($site['config_global_settings']);
@@ -24,5 +22,8 @@ if((file_exists($site['config_global_settings'])) && (file_exists($site['config_
 // Email Settings 
 $site['from_name'] = 'Your Name'; // from email name 
 $site['from_email'] = 'you@example.com'; // from email address 
+
+// Grab the FreakMailer class 
+require_once($site['config_library'].'/MailClass.inc'); 
 
 ?> 

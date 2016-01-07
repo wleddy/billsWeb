@@ -1,12 +1,11 @@
 
 <?php 
-// Configuration settings for All Sites
-// get system wide settings one level up from me
-$site['config_root'] = '/Users/bleddy/Sites'; // location of config.php for all sites
+// Configuration settings for My Site 
+// Set the path to global settings 
+$site['config_library'] = '/Users/bleddy/Sites/lib'; // location of config.php for all sites & phpMailer
+$site['config_global_settings'] = $site['config_library'].'/config.php';
 
-$site['config_library'] = $site['config_root'].'/lib'; // location of shared libraries
-$site['config_global_settings'] = $site['config_root'].'/config.php';
-
+// get system wide settings 
 if((file_exists($site['config_global_settings'])) && (file_exists($site['config_library']))) {
     require_once($site['config_global_settings']);
     
@@ -14,15 +13,13 @@ if((file_exists($site['config_global_settings'])) && (file_exists($site['config_
     throw(new Exception("Global Mail Configuration Files do not exist"));
 }
 
-//// Un Comment any setting you want to override the global settings
-//$site['smtp_mode'] = 'enabled'; // enabled or disabled 
-//$site['smtp_host'] = 'smtpout.secureserver.net'; 
-//$site['smtp_port'] = '80'; 
-//$site['smtp_username'] = 'mailagent@example.com';
-//$site['smtp_password'] = 'mypassword';
+// override or extend as needed
+//$site['from_name'] = 'Bike and Walk'; // from email name 
+//$site['from_email'] = 'info@bikeandwalk.org'; // from email address 
 
-// Email Settings 
-$site['from_name'] = 'Bill Leddy'; // from email name 
-$site['from_email'] = 'bill@williesworkshop.net'; // from email address 
+// Grab the FreakMailer class 
+require_once($site['config_library'].'/MailClass.inc'); 
+
+//echo "site config";
 
 ?> 
