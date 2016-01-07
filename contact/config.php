@@ -13,6 +13,9 @@ if((file_exists($site['config_global_settings'])) && (file_exists($site['config_
     throw(new Exception("Global Mail Configuration Files do not exist"));
 }
 
+// set the default time zone
+date_default_timezone_set('America/Los_Angeles');
+
 // override or extend as needed
 //$site['from_name'] = 'Bike and Walk'; // from email name 
 //$site['from_email'] = 'info@bikeandwalk.org'; // from email address 

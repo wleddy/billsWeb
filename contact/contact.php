@@ -1,7 +1,7 @@
 <?php
 try{
     $GotConfig = false;
-	include($_SERVER['DOCUMENT_ROOT'].'contact/config.php');
+	include 'config.php';
 	$GotConfig = true;
 } catch (Exception $e) {
     echo "<h3><strong>Exception:</strong> {$e->getMessage()}</h3>";
@@ -11,7 +11,7 @@ try{
 		$CommentHasHttp_b = (stripos($_POST['Question'],"http://") > -1);
 
 		if($CommentHasHttp_b === false){
-			$request = "Request submitted from web site: " . date("l F j, Y") . "\n\n";
+			$request = "Request submitted from the ".gethostname()." web site: " . date("l F j, Y") . "\n\n";
 		}
 		else {
 			$request = "SPAM!!!\n\nLooks like SPAM: " . date("l F j, Y") . "\n\n";
@@ -49,7 +49,7 @@ try{
 			// If not, we assume it's spam
 			$interval = time() - intval($_POST['Code']);
 			if ($interval < 5){
-				$mailer->Subject = "Web Contact - Too fast: " . $interval;
+				$mailer->Subject = "Web Contact for ".gethostname()." - Too fast: " . $interval;
 				$mailer->AddAddress('bill@williesworkshop.net', 'Bill Leddy'); 
 			}
 			// Add an address to send to. 
