@@ -1,23 +1,36 @@
 
 <?php 
+/*
+    When creating a new site from the framework 
+    modify the value for 'config_library' and rename this file as 'config.php'
+*/
+
+
 // Configuration settings
 // Location for system wide settings
-$site['config_root'] = '/Users/bleddy/Sites/lib'; // location of config.php for all sites
-$site['config_global_settings'] = $site['config_root'].'/config.php'; // Global config file
+//$site['config_library'] = $_SERVER['DOCUMENT_ROOT'].'../lib'; // this fails on some versions of php?
+$site['config_library'] = '/Users/bleddy/Sites/lib'; // use absolute path to be sure...
+$site['config_global_settings'] = $site['config_library'].'/config.php'; // Inside the config_library dir
+$site['mailer_class'] = $site['config_library'].'/MailClass.inc'; // Inside the config_library dir
 
-if((file_exists($site['config_global_settings'])) && (file_exists($site['config_library']))) {
+// get system wide settings 
+if(file_exists($site['config_library'])) {
+    // path is bad
+} else {
+    throw(new Exception("Global Mail Library directory do not exist"));
+}
+if(file_exists($site['config_global_settings'])) {
     require_once($site['config_global_settings']);
-    
 } else {
     throw(new Exception("Global Mail Configuration Files do not exist"));
 }
+if(file_exists($site['mailer_class'])) {
+    // Grab the FreakMailer class 
+    require_once($site['mailer_class']); 
+} else {
+    throw(new Exception("Mailer Class Files do not exist"));
+}
 
-//// Un Comment any setting you want to override the global settings
-//$site['smtp_mode'] = 'enabled'; // enabled or disabled 
-//$site['smtp_host'] = 'smtpout.secureserver.net'; 
-//$site['smtp_port'] = '80'; 
-//$site['smtp_username'] = 'mailagent@example.com';
-//$site['smtp_password'] = 'mypassword';
 
 // Email Settings 
 $site['from_name'] = 'Your Name'; // from email name 

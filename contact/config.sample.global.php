@@ -9,15 +9,11 @@
                     config.php <-- the local settings and path to globals
                     index.php
                 ...
-            /lib
+            /lib  <-- below the Document Root for the site
                 config.php <-- smtp server settings for all sites for this user
                 phpMailer/ <-- email library
                 
 */
-
-// Configuration settings for All Sites 
-//$site['config_library'] = '/Users/bleddy/Sites/lib'; // location of config.php for all sites
-//$site['config_global_settings'] = $site['config_root'].'/config.php'; // Global config file
 
 //echo "root config";
 
