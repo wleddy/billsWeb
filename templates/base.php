@@ -11,7 +11,14 @@ spl_autoload_register(function($class){
 use \Michelf\Markdown;
 
 function prepPath($path){
-    # ensure that path has a leading "/" and no trailing "/"
+    # ensure that path has a leading "/" and NO trailing "/"
+    # also strip off the query string if any
+    $queryStart = strpos($path,'?');
+    if (!$queryStart) $queryStart = 0;
+    if ($queryStart > 0) {
+        $path = substr($path,0,$queryStart);
+    }
+    
     if(substr($path,0,1) != "/"){
         $path = "/" + $path;
     }
@@ -25,12 +32,12 @@ function prepPath($path){
     'content.xx' is the default name for the main page body but having all the pages named
     "content" is confusing during editing. 
     This change allows you to name the main content file after the enclosing directory name
+    so, for example, the content file for the "about" directory can be named "about.html" 
+    instead of "content.html".
 */
 $requestURI = prepPath($_SERVER['REQUEST_URI']);
 $docRoot = prepPath($_SERVER['DOCUMENT_ROOT']);
 
-#ensure that there is a trailing '/' in $requestURI
-#if (substr($requestURI,strlen($requestURI)-1) != '/' ) {$requestURI = $requestURI . '/';}
 $bits = explode("/", $requestURI . "/");
 $localDir = $bits[count($bits)-2];
 
