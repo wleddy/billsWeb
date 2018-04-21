@@ -21,7 +21,7 @@ date_default_timezone_set('America/Los_Angeles');
 // override or extend as needed
 //$site['from_name'] = 'Bike and Walk'; // from email name 
 //$site['from_email'] = 'info@bikeandwalk.org'; // from email address 
-
+//$site['to_email'] = $site['from_email'];
 
 //echo "site config";
 

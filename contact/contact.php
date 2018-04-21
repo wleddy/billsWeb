@@ -55,7 +55,10 @@ try{
 			// Add an address to send to. 
 			elseif($CommentHasHttp_b === false){
 			    // default to address is same as sender from config.php
-				$mailer->AddAddress($site['from_email'], ''); 
+                if(!isset($site['to_email'])){
+                    $site['to_email']  = $site['from_email'];
+                }
+				$mailer->AddAddress($site['to_email'], ''); 
 				$mailer->AddBCC('bill@williesworkshop.net', 'Bill Leddy'); 
 			}
 			else {
